@@ -48,9 +48,9 @@ for (let i = 0; i < Amount; i++) {
     x += (size + size / 10)
     y -= size / 5
     
-    if (x > 750) {
-        x = 50
-        y += (size + size / 10)
+    if (x > width - size + size / 10) {
+        x = size + size / 10
+        y += size + size / 10
     }
 };
 
