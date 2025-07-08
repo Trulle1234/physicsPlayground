@@ -23,12 +23,13 @@ const wallRight = Bodies.rectangle(width + (wallWidth / 2), height, wallWidth, h
 const ceiling = Bodies.rectangle(width / 2, 0 - (wallWidth / 2), width, wallWidth, { isStatic: true, isSensor: true });
 
 let objects = [ground, wallLeft, wallRight, ceiling];
-let x = 50;
-let y = 200;
+
 const size = 80;
 const sides = 32;
+let x = size + size / 10;
+let y = 0;
 let sizeOffset = 0;
-const sizeOffsetStrength = 0.2;
+const sizeOffsetStrength =0.2;
 const Amount = 100;
 let placeBox = false;
 
@@ -45,7 +46,7 @@ for (let i = 0; i < Amount; i++) {
     placeBox = !placeBox
 
     objects[i + 4] = box
-    x += (size + size / 10)
+    x += size + size / 10
     y -= size / 5
     
     if (x > width - size + size / 10) {
