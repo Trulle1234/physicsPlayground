@@ -26,23 +26,26 @@ let objects = [ground, wallLeft, wallRight, ceiling];
 
 const SIZE = 80;
 const SIDES = 32;
+const DENSITY = 0.2;
 let x = SIZE + SIZE / 10;
 let y = 0;
 let sizeOffset = 0;
+let densityOffset = 0;
 const SIZE_OFFSET_STRENGTH = 0.1;
+const DENSITY_OFFSET_STRENGTH = 8;
 const AMOUNT = 100;
-let DENSITY = 0.2;
 let placeBox = false;
 
 for (let i = 0; i < AMOUNT; i++) {
     if (placeBox) {
-    var object = Bodies.rectangle(x, y, SIZE + sizeOffset, SIZE + sizeOffset, {  density: DENSITY });
+    var object = Bodies.rectangle(x, y, SIZE + sizeOffset, SIZE + sizeOffset, {  density: DENSITY + densityOffset });
     }
     else {
-    var object = Bodies.polygon(x, y, SIDES, (SIZE + sizeOffset)/ 2, {  density: DENSITY });
+    var object = Bodies.polygon(x, y, SIDES, (SIZE + sizeOffset)/ 2, {  density: DENSITY + densityOffset });
     }
     
     sizeOffset = (Math.random() * (SIZE * SIZE_OFFSET_STRENGTH));
+    densityOffset = (Math.random() * (DENSITY * DENSITY_OFFSET_STRENGTH));
 
     placeBox = !placeBox
 
