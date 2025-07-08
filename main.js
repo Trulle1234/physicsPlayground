@@ -11,47 +11,48 @@ const render = Render.create({
     engine: engine
 });
 
-const width = 1920;
-const height = 1080;
-const wallWidth = 15;
+const WIDTH = 1920;
+const HEIGHT = 1080;
+const WALL_WIDTH = 15;
 
-Matter.Render.setSize(render, width, height);
+Matter.Render.setSize(render, WIDTH, HEIGHT);
 
-const ground = Bodies.rectangle(width / 2, height + (wallWidth / 2), width, wallWidth, { isStatic: true });
-const wallLeft = Bodies.rectangle(0 - (wallWidth / 2), height, wallWidth, height * 2, { isStatic: true });
-const wallRight = Bodies.rectangle(width + (wallWidth / 2), height, wallWidth, height * 2, { isStatic: true });
-const ceiling = Bodies.rectangle(width / 2, 0 - (wallWidth / 2), width, wallWidth, { isStatic: true, isSensor: true });
+const ground = Bodies.rectangle(WIDTH / 2, HEIGHT + (WALL_WIDTH / 2), WIDTH, WALL_WIDTH, { isStatic: true });
+const wallLeft = Bodies.rectangle(0 - (WALL_WIDTH / 2), HEIGHT, WALL_WIDTH, HEIGHT * 2, { isStatic: true });
+const wallRight = Bodies.rectangle(WIDTH + (WALL_WIDTH / 2), HEIGHT, WALL_WIDTH, HEIGHT * 2, { isStatic: true });
+const ceiling = Bodies.rectangle(WIDTH / 2, 0 - (WALL_WIDTH / 2), WIDTH, WALL_WIDTH, { isStatic: true, isSensor: true });
 
 let objects = [ground, wallLeft, wallRight, ceiling];
 
-const size = 80;
-const sides = 32;
-let x = size + size / 10;
+const SIZE = 80;
+const SIDES = 32;
+let x = SIZE + SIZE / 10;
 let y = 0;
 let sizeOffset = 0;
-const sizeOffsetStrength =0.2;
-const Amount = 100;
+const SIZE_OFFSET_STRENGTH = 0.1;
+const AMOUNT = 100;
+let DENSITY = 0.2;
 let placeBox = false;
 
-for (let i = 0; i < Amount; i++) {
+for (let i = 0; i < AMOUNT; i++) {
     if (placeBox) {
-    var box = Bodies.rectangle(x, y, size + sizeOffset, size + sizeOffset);
+    var object = Bodies.rectangle(x, y, SIZE + sizeOffset, SIZE + sizeOffset, {  density: DENSITY });
     }
     else {
-    var box = Bodies.polygon(x, y, sides, (size + sizeOffset)/ 2);
+    var object = Bodies.polygon(x, y, SIDES, (SIZE + sizeOffset)/ 2, {  density: DENSITY });
     }
     
-    sizeOffset = (Math.random() * (size * sizeOffsetStrength));
+    sizeOffset = (Math.random() * (SIZE * SIZE_OFFSET_STRENGTH));
 
     placeBox = !placeBox
 
-    objects[i + 4] = box
-    x += size + size / 10
-    y -= size / 5
+    objects[i + 4] = object
+    x += SIZE + SIZE / 10
+    y -= SIZE / 5
     
-    if (x > width - size + size / 10) {
-        x = size + size / 10
-        y += size + size / 10
+    if (x > WIDTH - SIZE + SIZE / 10) {
+        x = SIZE + SIZE / 10
+        y += SIZE + SIZE / 10
     }
 };
 
