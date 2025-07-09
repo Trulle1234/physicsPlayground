@@ -29,15 +29,15 @@ export let objects = [ground, wallLeft, wallRight, ceiling];
 
 document.addEventListener("keydown", function(e) {
     if (e.key == " ") {
-        addRect(settings.WIDTH * Math.random(), 0, 80, 80, 10, 0.02, 0.5, 0.5)
+        addRect(settings.WIDTH * Math.random(), 40, 80, 80, 10, 0.02, 0.5, 0.5, 0.8)
     }
 });
 
 var mouse = Mouse.create(render.canvas)
 var mConstraint = MouseConstraint.create(engine, {
     mouse: mouse, 
-    constraint: { 
-    stiffness: 0.03,
+    constraint: {  
+    stiffness: 0.02,
     damping: 0.4
   }});
 Composite.add(engine.world, mConstraint);
