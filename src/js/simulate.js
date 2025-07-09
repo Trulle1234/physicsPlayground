@@ -1,3 +1,8 @@
+import Matter from "matter-js";
+import { addPoly, addCircle, addRect } from "./add.js"
+import * as settings from "./settings.js";
+Object.assign(globalThis, settings);
+
 const Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,
@@ -11,10 +16,6 @@ const render = Render.create({
     engine: engine
 });
 
-const WIDTH = 1920;
-const HEIGHT = 1080;
-const WALL_WIDTH = 15;
-
 Matter.Render.setSize(render, WIDTH, HEIGHT);
 
 const ground = Bodies.rectangle(WIDTH / 2, HEIGHT + (WALL_WIDTH / 2), WIDTH, WALL_WIDTH, { isStatic: true });
@@ -22,7 +23,7 @@ const wallLeft = Bodies.rectangle(0 - (WALL_WIDTH / 2), HEIGHT, WALL_WIDTH, HEIG
 const wallRight = Bodies.rectangle(WIDTH + (WALL_WIDTH / 2), HEIGHT, WALL_WIDTH, HEIGHT * 2, { isStatic: true });
 const ceiling = Bodies.rectangle(WIDTH / 2, 0 - (WALL_WIDTH / 2), WIDTH, WALL_WIDTH, { isStatic: true, isSensor: true });
 
-let objects = [ground, wallLeft, wallRight, ceiling];
+export let objects = [ground, wallLeft, wallRight, ceiling];
 
 const SIZE = 80;
 const SIDES = 32;
@@ -38,10 +39,10 @@ let placeBox = false;
 
 for (let i = 0; i < AMOUNT; i++) {
     if (placeBox) {
-    var object = Bodies.rectangle(x, y, SIZE + sizeOffset, SIZE + sizeOffset, {  density: DENSITY + densityOffset });
+        addRect( x, y, SIZE + sizeOffset, SIZE + sizeOffset, DENSITY + densityOffset)
     }
     else {
-    var object = Bodies.polygon(x, y, SIDES, (SIZE + sizeOffset)/ 2, {  density: DENSITY + densityOffset });
+        addCircle(x, y, SIZE  + sizeOffset / 2, DENSITY + densityOffset)
     }
     
     sizeOffset = (Math.random() * (SIZE * SIZE_OFFSET_STRENGTH));
@@ -49,7 +50,6 @@ for (let i = 0; i < AMOUNT; i++) {
 
     placeBox = !placeBox
 
-    objects[i + 4] = object
     x += SIZE + SIZE / 10
     y -= SIZE / 5
     

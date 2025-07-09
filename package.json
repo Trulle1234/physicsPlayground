@@ -1,5 +1,12 @@
 {
+  "devDependencies": {
+    "vite": "^7.0.3"
+  },
+  "scripts": {
+    "dev": "vite"
+  },
   "dependencies": {
+    "matter": "^0.2.0",
     "matter-js": "^0.20.0"
   }
 }
