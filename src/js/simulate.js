@@ -7,9 +7,11 @@ const Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,
     Bodies = Matter.Bodies,
-    Composite = Matter.Composite;
+    Composite = Matter.Composite,
+    Mouse = Matter.Mouse,
+    MouseConstraint = Matter.MouseConstraint;
 
-const engine = Engine.create();
+export const engine = Engine.create();
 
 const render = Render.create({
     element: document.body,
@@ -21,48 +23,28 @@ Matter.Render.setSize(render, WIDTH, HEIGHT);
 const ground = Bodies.rectangle(WIDTH / 2, HEIGHT + (WALL_WIDTH / 2), WIDTH, WALL_WIDTH, { isStatic: true });
 const wallLeft = Bodies.rectangle(0 - (WALL_WIDTH / 2), HEIGHT, WALL_WIDTH, HEIGHT * 2, { isStatic: true });
 const wallRight = Bodies.rectangle(WIDTH + (WALL_WIDTH / 2), HEIGHT, WALL_WIDTH, HEIGHT * 2, { isStatic: true });
-const ceiling = Bodies.rectangle(WIDTH / 2, 0 - (WALL_WIDTH / 2), WIDTH, WALL_WIDTH, { isStatic: true, isSensor: true });
+const ceiling = Bodies.rectangle(WIDTH / 2, 0 - (WALL_WIDTH / 2), WIDTH, WALL_WIDTH, { isStatic: true});
 
 export let objects = [ground, wallLeft, wallRight, ceiling];
 
-const SIZE = 80;
-const SIDES = 32;
-const DENSITY = 0.2;
-let x = SIZE + SIZE / 10;
-let y = 0;
-let sizeOffset = 0;
-let densityOffset = 0;
-const SIZE_OFFSET_STRENGTH = 0.1;
-const DENSITY_OFFSET_STRENGTH = 8;
-const AMOUNT = 100;
-let placeBox = false;
-
-for (let i = 0; i < AMOUNT; i++) {
-    if (placeBox) {
-        addRect( x, y, SIZE + sizeOffset, SIZE + sizeOffset, DENSITY + densityOffset)
+document.addEventListener("keydown", function(e) {
+    if (e.key == " ") {
+        addRect(settings.WIDTH * Math.random(), 0, 80, 80, 10, 0.02)
     }
-    else {
-        addCircle(x, y, SIZE  + sizeOffset / 2, DENSITY + densityOffset)
-    }
-    
-    sizeOffset = (Math.random() * (SIZE * SIZE_OFFSET_STRENGTH));
-    densityOffset = (Math.random() * (DENSITY * DENSITY_OFFSET_STRENGTH));
+});
 
-    placeBox = !placeBox
-
-    x += SIZE + SIZE / 10
-    y -= SIZE / 5
-    
-    if (x > WIDTH - SIZE + SIZE / 10) {
-        x = SIZE + SIZE / 10
-        y += SIZE + SIZE / 10
-    }
-};
+var mouse = Mouse.create(render.canvas)
+var mConstraint = MouseConstraint.create(engine, {
+    mouse: mouse, 
+    constraint: { 
+    stiffness: 0.03,
+    damping: 0.2
+  }});
+Composite.add(engine.world, mConstraint);
 
 Composite.add(engine.world, objects);
 
 Render.run(render);
-
 
 var runner = Runner.create();
 
