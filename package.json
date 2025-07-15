@@ -3,7 +3,7 @@
     "vite": "^7.0.3"
   },
   "scripts": {
-    "dev": "vite"
+    "dev": "vite --host"
   },
   "dependencies": {
     "matter": "^0.2.0",

@@ -4,8 +4,6 @@ import * as settings from "./settings.js";
 import { initMenu } from "./menu.js";
 Object.assign(globalThis, settings);
 
-initMenu();
-
 const Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,
@@ -16,7 +14,7 @@ const Engine = Matter.Engine,
 
 export const engine = Engine.create();
 
-const render = Render.create({
+export const render = Render.create({
     element: document.body,
     engine: engine
 });
@@ -46,6 +44,8 @@ var mConstraint = MouseConstraint.create(engine, {
 Composite.add(engine.world, mConstraint);
 
 Composite.add(engine.world, objects);
+
+initMenu(render.canvas);
 
 Render.run(render);
 

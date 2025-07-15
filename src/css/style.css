@@ -79,3 +79,14 @@ canvas {
     z-index: 1100;
     border-radius: 4px;
 }
+
+/* Preview under drag */
+.drag-preview {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.5;
+  width: 160px;
+  height: 160px;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
