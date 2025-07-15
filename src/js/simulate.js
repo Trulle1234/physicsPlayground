@@ -1,7 +1,10 @@
 import Matter from "matter-js";
 import { addPoly, addCircle, addRect } from "./add.js"
 import * as settings from "./settings.js";
+import { initMenu } from "./menu.js";
 Object.assign(globalThis, settings);
+
+initMenu();
 
 const Engine = Matter.Engine,
     Render = Matter.Render,
@@ -27,7 +30,7 @@ const ceiling = Bodies.rectangle(WIDTH / 2, 0 - (WALL_WIDTH / 2), WIDTH, WALL_WI
 
 export let objects = [ground, wallLeft, wallRight, ceiling];
 
-document.addEventListener("keydown", function(e) {
+document.addEventListener("keyup", function(e) {
     if (e.key == " ") {
         addRect(settings.WIDTH * Math.random(), 40, 80, 80, 10, 0.02, 0.5, 0.5, 0.8)
     }

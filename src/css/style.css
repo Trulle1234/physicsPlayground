@@ -17,3 +17,65 @@ canvas {
     width: auto;
     height: auto;
 }
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    transform: translateX(100%); /* Start outside viewport */
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+/* Active state: slide into view */
+.sidebar.active {
+    transform: translateX(0);
+}
+
+/* Menu links */
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.sidebar-btn img {
+  display: block;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+  color: black;
+}
+.sidebar-btn.active,
+.sidebar-btn:hover {
+  background: #ddd;
+}
+
+/* Toggle button */
+#toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 1100;
+    border-radius: 4px;
+}
