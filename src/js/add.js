@@ -13,12 +13,14 @@ export function addRect(x, y, width, height, density, frictionAir, friction, fri
     Composite.add(engine.world, object);
 }
 export function addPoly(x, y, sides, diameter, density, frictionAir, friction, frictionStatic, restitution) {
+    const initialAngle = (sides === 3) ? Math.PI / 2: 0;
     var object = Bodies.polygon(x, y, sides, diameter / 2, {          
           density: density,
           frictionAir: frictionAir,
           friction: friction,
           frictionStatic: frictionStatic,
-          restitution: restitution
+          restitution: restitution,
+          angle: initialAngle
         });
     objects.push(object);
     Composite.add(engine.world, object);

@@ -5,6 +5,7 @@ let canvas       = null;
 let previewImg   = null;
 let dragging     = false;
 let currentSrc   = null;
+let currentId    = null;
 
 export function initMenu(matterCanvas) {
   canvas = matterCanvas;
@@ -42,6 +43,7 @@ function startDrag(e) {
   e.preventDefault();
   dragging   = true;
   currentSrc = e.currentTarget.src;
+  currentId = e.currentTarget.id;
   e.currentTarget.setPointerCapture(e.pointerId);
 }
 
@@ -77,7 +79,7 @@ function endDrag(e) {
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
   if (x >= 0 && y >= 0 && x <= rect.width && y <= rect.height) {
-    addFromMenu(x, y);
+    addFromMenu(x, y, currentId);
   }
 
   try {

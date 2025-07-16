@@ -47,8 +47,13 @@ var runner = Runner.create();
 
 Runner.run(runner, engine);
 
-export function addFromMenu(x, y) {
+export function addFromMenu(x, y, id) {
   let scale = render.canvas.clientWidth / settings.WIDTH
-  addRect(x / scale, y / scale, 80, 80, 10, 0.02, 0.5, 0.5, 0.8)
-  console.log(x + " " + scale * x + " " + scale)
+  if (id == "img-square") {
+    addRect(x / scale, y / scale, 80, 80, 10, 0.02, 0.5, 0.5, 0.8);
+  } else if (id == "img-circle") {
+    addCircle(x / scale, y / scale, 80, 10, 0.02, 0.5, 0.5, 0.8);
+  } else if (id == "img-triangle") {
+    addPoly(x / scale, y / scale, 3, 80, 10, 0.02, 0.5, 0.5, 0.8);
+  }
 }
