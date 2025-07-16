@@ -1,50 +1,49 @@
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overscroll-behavior: none;
+  -ms-scroll-chaining: none;
+  -webkit-overflow-scrolling: auto;
 }
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background-color: #0b0a12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #0b0a12;
+  touch-action: none;
+  user-select: none;
 }
 canvas {
-    display: block;
-    max-width: 100vw;
-    max-height: 100vh;
-    width: auto;
-    height: auto;
+  display: block;
+  max-width: 100vw;
+  max-height: 100vh;
+  width: auto;
+  height: auto;
 }
 .sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    transform: translateX(100%); /* Start outside viewport */
-    transition: transform 0.3s ease;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #241f2e;
+  opacity: 0.6;
+  padding: 20px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
 }
-
-/* Active state: slide into view */
 .sidebar.active {
-    transform: translateX(0);
+  transform: translateX(0);
 }
-
-/* Menu links */
 .sidebar ul {
-    list-style: none;
+  list-style: none;
 }
-
 .sidebar ul li {
-    margin: 15px 0;
+  margin: 15px 0;
 }
-
 .sidebar-btn {
   display: block;
   width: 100%;
@@ -62,31 +61,27 @@ canvas {
 }
 .sidebar-btn.active,
 .sidebar-btn:hover {
-  background: #ddd;
+  background: #433850;
 }
-
-/* Toggle button */
 #toggle-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    z-index: 1100;
-    border-radius: 4px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #1d1724;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 1100;
+  border-radius: 4px;
 }
-
-/* Preview under drag */
 .drag-preview {
   position: absolute;
   pointer-events: none;
   opacity: 0.5;
-  width: 160px;
-  height: 160px;
   transform: translate(-50%, -50%);
   z-index: 1000;
+  touch-action: none;
+  user-select: none;
 }

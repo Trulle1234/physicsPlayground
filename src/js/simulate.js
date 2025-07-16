@@ -28,12 +28,6 @@ const ceiling = Bodies.rectangle(WIDTH / 2, 0 - (WALL_WIDTH / 2), WIDTH, WALL_WI
 
 export let objects = [ground, wallLeft, wallRight, ceiling];
 
-document.addEventListener("keyup", function(e) {
-    if (e.key == " ") {
-        addRect(settings.WIDTH * Math.random(), 40, 80, 80, 10, 0.02, 0.5, 0.5, 0.8)
-    }
-});
-
 var mouse = Mouse.create(render.canvas)
 var mConstraint = MouseConstraint.create(engine, {
     mouse: mouse, 
@@ -52,3 +46,9 @@ Render.run(render);
 var runner = Runner.create();
 
 Runner.run(runner, engine);
+
+export function addFromMenu(x, y) {
+  let scale = render.canvas.clientWidth / settings.WIDTH
+  addRect(x / scale, y / scale, 80, 80, 10, 0.02, 0.5, 0.5, 0.8)
+  console.log(x + " " + scale * x + " " + scale)
+}
