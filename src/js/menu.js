@@ -7,13 +7,32 @@ let dragging     = false;
 let currentSrc   = null;
 let currentId    = null;
 
+export let widthExport       = 80;
+export let heightExport      = 80;
+export let densityExport     = 10;
+export let frictionAirExport = 0.02;
+export let frictionExport    = 0.5;
+export let restitutionExport = 0.8;
+
 export function initMenu(matterCanvas) {
   canvas = matterCanvas;
 
   const sidebar    = document.getElementById('sidebar');
   const toggleBtn  = document.getElementById('toggle-btn');
+
   const sliderWidth = document.getElementById('slider-width');
   const outputWidth = document.getElementById('output-width');
+  const sliderHeight = document.getElementById('slider-height');
+  const outputHeight = document.getElementById('output-height');
+  const sliderDensity = document.getElementById('slider-density');
+  const outputDensity = document.getElementById('output-density');
+  const sliderFrictionAir = document.getElementById('slider-friction-air');
+  const outputFrictionAir = document.getElementById('output-friction-air');
+  const sliderFriction = document.getElementById('slider-friction');
+  const outputFriction = document.getElementById('output-friction');
+  const sliderRestitution = document.getElementById('slider-restitution');
+  const outputRestitution = document.getElementById('output-restitution');
+
   const openIcon  = '&#9776;'; // ☰
   const closeIcon = '&times;'; // ×
 
@@ -33,9 +52,37 @@ export function initMenu(matterCanvas) {
     }
   });
 
+
   sliderWidth.addEventListener('input', function(event) {
-    outputWidth.innerHTML = "Width: " + event.target.value;
+    outputWidth.innerHTML = "Width/Diameter: " + event.target.value;
+    widthExport = event.target.value
   });
+
+  sliderHeight.addEventListener('input', function(event) {
+    outputHeight.innerHTML = "Height: " + event.target.value;
+    heightExport = event.target.value
+  });
+
+  sliderDensity.addEventListener('input', function(event) {
+    outputDensity.innerHTML = "Density: " + event.target.value;
+    densityExport = event.target.value
+  });
+
+  sliderFrictionAir.addEventListener('input', function(event) {
+    outputFrictionAir.innerHTML = "Air Resistance: " + event.target.value;
+    frictionAirExport = event.target.value * 0.01
+  });
+
+  sliderFriction.addEventListener('input', function(event) {
+    outputFriction.innerHTML = "Friction: " + event.target.value;
+    frictionExport = event.target.value * 0.1
+  });
+
+  sliderRestitution.addEventListener('input', function(event) {
+    outputRestitution.innerHTML = "Bounciness: " + event.target.value;
+    restitutionExport = event.target.value * 0.01
+  });
+
 
   document.querySelectorAll('.dragable').forEach(icon => {
     icon.addEventListener('pointerdown', startDrag);
