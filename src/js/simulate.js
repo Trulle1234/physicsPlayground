@@ -1,7 +1,7 @@
 import Matter from "matter-js";
 import { addPoly, addCircle, addRect } from "./add.js"
 import * as settings from "./settings.js";
-import { densityExport, frictionAirExport, frictionExport, heightExport, initMenu, widthExport, restitutionExport } from "./menu.js";
+import { initMenu, density, friction, frictionAir, height, restitution, width } from "./menu.js";
 Object.assign(globalThis, settings);
 
 const Engine = Matter.Engine,
@@ -51,11 +51,11 @@ Runner.run(runner, engine);
 export function addFromMenu(x, y, id) {
   let scale = render.canvas.clientWidth / settings.WIDTH
   if (id == "img-square") {
-    addRect(x / scale, y / scale, widthExport, heightExport, densityExport, frictionAirExport, frictionExport, 0.5, restitutionExport);
+    addRect(x / scale, y / scale, width.value, height.value, density.value, frictionAir.value, friction.value, 0.5, restitution.value);
   } else if (id == "img-circle") {
-    addCircle(x / scale, y / scale, widthExport, densityExport, frictionAirExport, frictionExport, 0.5, restitutionExport);
+    addCircle(x / scale, y / scale, width.value, density.value, frictionAir.value, friction.value, 0.5, restitution.value);
   } else if (id == "img-triangle") {
-    addPoly(x / scale, y / scale, 3, widthExport, densityExport, frictionAirExport, frictionExport, 0.5, restitutionExport);
+    addPoly(x / scale, y / scale, 3, width.value, density.value, frictionAir.value, friction.value, 0.5, restitution.value);
   }
 }
 
