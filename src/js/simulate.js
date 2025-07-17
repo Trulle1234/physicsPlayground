@@ -61,6 +61,12 @@ export function addFromMenu(x, y, id) {
 
 document.addEventListener("keypress", function(event) {
   if (event.key.toLowerCase() === "c") {
-    Engine.clear(engine);
+    Matter.World.clear(engine.world, true);
+
+    Matter.Engine.clear(engine);
+
+    Runner = Matter.Runner.create();
+    Matter.Runner.run(runner, engine);
+
   }
 });
