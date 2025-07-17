@@ -14,7 +14,8 @@ export function addRect(x, y, width, height, density, frictionAir, friction, fri
 }
 export function addPoly(x, y, sides, diameter, density, frictionAir, friction, frictionStatic, restitution) {
     const initialAngle = (sides === 3) ? Math.PI / 2: 0;
-    var object = Bodies.polygon(x, y, sides, diameter / 2, {          
+    const scaleFix = (sides === 3) ? 1 / Math.sin(Math.PI / 3): 1;
+    var object = Bodies.polygon(x, y, sides, (diameter / 2) * scaleFix, {          
           density: density,
           frictionAir: frictionAir,
           friction: friction,

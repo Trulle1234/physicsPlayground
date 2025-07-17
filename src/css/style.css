@@ -34,6 +34,8 @@ canvas {
   transform: translateX(100%);
   transition: transform 0.3s ease;
   z-index: 1000;
+  overflow-y: auto;
+  scrollbar-color: #433e46 #000;
 }
 .sidebar.active {
   transform: translateX(0);

@@ -32,8 +32,9 @@ var mouse = Mouse.create(render.canvas)
 var mConstraint = MouseConstraint.create(engine, {
     mouse: mouse, 
     constraint: {  
-    stiffness: 0.02,
-    damping: 0.4
+    stiffness: 0.06,
+    damping: 0.9,
+    render: {visible: false}
   }});
 Composite.add(engine.world, mConstraint);
 
