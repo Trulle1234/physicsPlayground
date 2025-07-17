@@ -58,3 +58,9 @@ export function addFromMenu(x, y, id) {
     addPoly(x / scale, y / scale, 3, widthExport, densityExport, frictionAirExport, frictionExport, 0.5, restitutionExport);
   }
 }
+
+document.addEventListener("keypress", function(event) {
+  if (event.key.toLowerCase() === "c") {
+    Engine.clear(engine);
+  }
+});

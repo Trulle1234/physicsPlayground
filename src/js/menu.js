@@ -7,6 +7,7 @@ let dragging     = false;
 let currentSrc   = null;
 let currentId    = null;
 
+export let amountExport      = 1;
 export let widthExport       = 80;
 export let heightExport      = 80;
 export let densityExport     = 10;
@@ -20,6 +21,8 @@ export function initMenu(matterCanvas) {
   const sidebar    = document.getElementById('sidebar');
   const toggleBtn  = document.getElementById('toggle-btn');
 
+  const sliderAmount = document.getElementById('slider-amount');
+  const outputAmount = document.getElementById('output-amount');
   const sliderWidth = document.getElementById('slider-width');
   const outputWidth = document.getElementById('output-width');
   const sliderHeight = document.getElementById('slider-height');
@@ -52,6 +55,11 @@ export function initMenu(matterCanvas) {
     }
   });
 
+
+  sliderAmount.addEventListener('input', function(event) {
+    outputAmount.innerHTML = "Amount: " + event.target.value;
+    amountExport = event.target.value
+  });
 
   sliderWidth.addEventListener('input', function(event) {
     outputWidth.innerHTML = "Width/Diameter: " + event.target.value;
@@ -132,7 +140,9 @@ function endDrag(e) {
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
   if (x >= 0 && y >= 0 && x <= rect.width && y <= rect.height) {
-    addFromMenu(x, y, currentId);
+    for (let i = 0; i < amountExport; i++) {
+      addFromMenu(x, y, currentId);
+    }
   }
 
   try {
