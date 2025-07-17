@@ -10,8 +10,10 @@ let currentId    = null;
 export function initMenu(matterCanvas) {
   canvas = matterCanvas;
 
-  const sidebar   = document.getElementById('sidebar');
-  const toggleBtn = document.getElementById('toggle-btn');
+  const sidebar    = document.getElementById('sidebar');
+  const toggleBtn  = document.getElementById('toggle-btn');
+  const sliderWidth = document.getElementById('slider-width');
+  const outputWidth = document.getElementById('output-width');
   const openIcon  = '&#9776;'; // ☰
   const closeIcon = '&times;'; // ×
 
@@ -29,6 +31,10 @@ export function initMenu(matterCanvas) {
       sidebar.classList.remove('active');
       toggleBtn.innerHTML = openIcon;
     }
+  });
+
+  sliderWidth.addEventListener('input', function(event) {
+    outputWidth.innerHTML = "Width: " + event.target.value;
   });
 
   document.querySelectorAll('.dragable').forEach(icon => {
