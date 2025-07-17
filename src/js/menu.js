@@ -36,8 +36,8 @@ export function initMenu(matterCanvas) {
   const sliderRestitution = document.getElementById('slider-restitution');
   const outputRestitution = document.getElementById('output-restitution');
 
-  const openIcon  = '&#9776;'; // ☰
-  const closeIcon = '&times;'; // ×
+  const openIcon  = '&#8862;';
+  const closeIcon = '&#65336;';
 
   toggleBtn.addEventListener('click', () => {
     const isActive = sidebar.classList.toggle('active');
