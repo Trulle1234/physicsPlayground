@@ -2,6 +2,7 @@ import Matter from "matter-js";
 import { addPoly, addCircle, addRect } from "./add.js"
 import * as settings from "./settings.js";
 import { initMenu, density, friction, frictionAir, height, restitution, width } from "./menu.js";
+import "./tilt.js"
 Object.assign(globalThis, settings);
 
 const Engine = Matter.Engine,
@@ -13,6 +14,7 @@ const Engine = Matter.Engine,
     MouseConstraint = Matter.MouseConstraint;
 
 export const engine = Engine.create();
+window.engine = engine; 
 
 export const render = Render.create({
     element: document.body,
