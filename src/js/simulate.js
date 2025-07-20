@@ -72,3 +72,17 @@ document.addEventListener("keypress", function(event) {
 
   }
 });
+
+const mql = window.matchMedia("(orientation: portrait)");
+
+function rotateCanvasIfPortrait() {
+  const canvas = document.querySelector("canvas");
+  if (mql.matches) {
+    canvas.classList.add("portrait-rotate");
+  } else {
+    canvas.classList.remove("portrait-rotate");
+  }
+}
+
+mql.addEventListener("change", rotateCanvasIfPortrait);
+document.addEventListener("DOMContentLoaded", rotateCanvasIfPortrait);

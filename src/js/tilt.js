@@ -16,7 +16,6 @@ function initRotationGravity() {
 }
 
 function handleRotation(event) {
-    console.log("α, β, γ =", event.alpha, event.beta, event.gamma);
     const alphaDeg = event.alpha ?? 0;
     const rad = (alphaDeg + 90) * (Math.PI / 180);
     engine.world.gravity.x = Math.cos(rad);

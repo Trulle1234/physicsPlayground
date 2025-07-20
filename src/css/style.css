@@ -29,7 +29,22 @@ canvas {
   max-height: 100vh;
   width: auto;
   height: auto;
+  touch-action: none;
+  user-select: none;
 }
+
+canvas.portrait-rotate {
+  transform: rotate(90deg);
+  transform-origin: center center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100vh !important;
+  height: 100vw !important;
+  margin-left: calc(-50vh);
+  margin-top: calc(-50vw);
+}
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -43,6 +58,8 @@ canvas {
   z-index: 1000;
   overflow-y: auto;
   scrollbar-color: var(--shade) var(--bg);
+  touch-action: none;
+  user-select: none;
 }
 .sidebar.active {
   transform: translateX(0);
