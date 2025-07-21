@@ -7,6 +7,14 @@
   </head>
   <body>
     <script type="module" src="/src/js/simulate.js"></script>
+    <script type="module" src="/src/js/popup.js"></script>
+    
+    <div class="popup close-popup" id="popup">
+      <img src="icons/rotation_lock.svg">
+      <h2>Plese turn on rotation lock</h2>
+      <p>For this website to properly function on your device you need to turn on rotation lock / turn off auto rotate.</p>
+      <button type="button" onclick="closePopup()">Done!</button>
+    </div>
 
     <div id="sidebar" class="sidebar">
       <ul>

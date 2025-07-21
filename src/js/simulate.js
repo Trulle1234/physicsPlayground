@@ -3,6 +3,7 @@ import { addPoly, addCircle, addRect } from "./add.js"
 import * as settings from "./settings.js";
 import { initMenu, density, friction, frictionAir, height, restitution, width } from "./menu.js";
 import "./tilt.js"
+
 Object.assign(globalThis, settings);
 
 const Engine = Matter.Engine,

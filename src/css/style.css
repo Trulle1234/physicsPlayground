@@ -31,6 +31,7 @@ canvas {
   height: auto;
   touch-action: none;
   user-select: none;
+  z-index: 0;
 }
 
 canvas.portrait-rotate {
@@ -45,6 +46,52 @@ canvas.portrait-rotate {
   backface-visibility: hidden;
 }
 
+.popup {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 35px;
+  width: 800px;
+  background: var(--shade);
+  border-radius: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 0 40px 20px;
+  color: var(--text);
+  visibility: hidden;
+  z-index: 10;
+}
+
+.close-popup{
+  display: none !important;
+}
+
+.popup img {
+  width: 200px;
+  margin-top: 40px;
+}
+
+.popup button {
+  width: 40%;
+  padding: 20px 0;
+  margin-top: 20px;
+  border-radius: 20px;
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--text);
+  background: var(--surface);
+  border: 0;
+  box-shadow: 0 2px 6px var(--bg);
+}
+
+.popup button:active {
+  background: var(--accent);
+  color: var(--text);
+  box-shadow: 0 4px 16px var(--accent);
+  transform: scale(0.97);
+  transition: background 0.1s, color 0.1s, box-shadow 0.1s, transform 0.1s;
+}
 
 .sidebar {
   position: fixed;
