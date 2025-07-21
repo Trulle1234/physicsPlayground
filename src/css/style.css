@@ -34,18 +34,6 @@ canvas {
   z-index: 0;
 }
 
-canvas.portrait-rotate {
-  position: absolute;
-  left: 50%;
-  transform-origin: center center;
-  transform: translateX(-50%) rotate(90deg) !important;
-  width: auto !important;
-  height: auto !important;
-  max-width: 100vh !important;
-  max-height: 100vw !important;
-  backface-visibility: hidden;
-}
-
 .popup {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 35px;

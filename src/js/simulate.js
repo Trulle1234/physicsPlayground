@@ -52,7 +52,7 @@ var runner = Runner.create();
 Runner.run(runner, engine);
 
 export function addFromMenu(x, y, id) {
-  let scale = render.canvas.clientWidth / settings.WIDTH
+    let scale = render.canvas.clientWidth / settings.WIDTH;
   if (id == "img-square") {
     addRect(x / scale, y / scale, width.value, height.value, density.value, frictionAir.value, friction.value, 0.5, restitution.value);
   } else if (id == "img-circle") {
@@ -73,24 +73,3 @@ document.addEventListener("keypress", function(event) {
 
   }
 });
-
-const mql = window.matchMedia("(orientation: portrait)");
-
-function rotateCanvasIfPortrait() {
-  const canvas = document.querySelector("canvas");
-  if (!canvas) return;
-  if (mql.matches) {
-    canvas.classList.add("portrait-rotate");
-  } else {
-    canvas.classList.remove("portrait-rotate");
-  }
-}
-
-if (mql.addEventListener) {
-  mql.addEventListener("change", rotateCanvasIfPortrait);
-}
-
-window.addEventListener("resize", rotateCanvasIfPortrait);
-window.addEventListener("orientationchange", rotateCanvasIfPortrait);
-
-document.addEventListener("DOMContentLoaded", rotateCanvasIfPortrait);
