@@ -1,4 +1,6 @@
 cert/192.168.86.28-key.pem
 cert/192.168.86.28.pem
 vite.config.js
+package-lock.json
+package.json
 node_modules/
