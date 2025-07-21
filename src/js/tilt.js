@@ -16,10 +16,15 @@ function initRotationGravity() {
 }
 
 function handleRotation(event) {
-    const alphaDeg = event.alpha ?? 0;
-    const rad = (alphaDeg + 90) * (Math.PI / 180);
-    engine.world.gravity.x = Math.cos(rad);
-    engine.world.gravity.y = Math.sin(rad);
+  let gamma = event.gamma ?? 0;
+  let beta  = event.beta  ?? 0;
+  
+  gamma = Math.max(-90, Math.min(90, gamma));
+  beta  = Math.max(-90, Math.min(90, beta));
+
+  engine.world.gravity.x = gamma / 90;
+  engine.world.gravity.y = beta  / 90;
 }
+
 
 initRotationGravity();
