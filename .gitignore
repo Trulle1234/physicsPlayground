@@ -1,3 +1,4 @@
 cert/192.168.86.28-key.pem
 cert/192.168.86.28.pem
 vite.config.js
+node_modules/
