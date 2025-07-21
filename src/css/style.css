@@ -34,16 +34,17 @@ canvas {
 }
 
 canvas.portrait-rotate {
-  transform: rotate(90deg);
-  transform-origin: center center;
   position: absolute;
   left: 50%;
-  top: 50%;
-  width: 100vh !important;
-  height: 100vw !important;
-  margin-left: calc(-50vh);
-  margin-top: calc(-50vw);
+  transform-origin: center center;
+  transform: translateX(-50%) rotate(90deg) !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100vh !important;
+  max-height: 100vw !important;
+  backface-visibility: hidden;
 }
+
 
 .sidebar {
   position: fixed;
@@ -109,6 +110,11 @@ canvas.portrait-rotate {
   touch-action: none;
   user-select: none;
 }
+
+button, .sidebar-btn, .slider-controls button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .slidecontainer {
   width: 100%;
 }

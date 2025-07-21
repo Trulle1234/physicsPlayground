@@ -77,6 +77,7 @@ const mql = window.matchMedia("(orientation: portrait)");
 
 function rotateCanvasIfPortrait() {
   const canvas = document.querySelector("canvas");
+  if (!canvas) return;
   if (mql.matches) {
     canvas.classList.add("portrait-rotate");
   } else {
@@ -84,5 +85,11 @@ function rotateCanvasIfPortrait() {
   }
 }
 
-mql.addEventListener("change", rotateCanvasIfPortrait);
+if (mql.addEventListener) {
+  mql.addEventListener("change", rotateCanvasIfPortrait);
+}
+
+window.addEventListener("resize", rotateCanvasIfPortrait);
+window.addEventListener("orientationchange", rotateCanvasIfPortrait);
+
 document.addEventListener("DOMContentLoaded", rotateCanvasIfPortrait);
