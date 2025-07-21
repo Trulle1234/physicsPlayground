@@ -2,7 +2,7 @@ import Matter from "matter-js";
 import { addPoly, addCircle, addRect } from "./add.js"
 import * as settings from "./settings.js";
 import { initMenu, density, friction, frictionAir, height, restitution, width } from "./menu.js";
-import "./tilt.js"
+import { initRotationGravity } from "./tilt.js";
 
 Object.assign(globalThis, settings);
 
@@ -23,6 +23,8 @@ export const render = Render.create({
 });
 
 Matter.Render.setSize(render, WIDTH, HEIGHT);
+
+initRotationGravity();
 
 const ground = Bodies.rectangle(WIDTH / 2, HEIGHT + (WALL_WIDTH / 2), WIDTH, WALL_WIDTH, { isStatic: true });
 const wallLeft = Bodies.rectangle(0 - (WALL_WIDTH / 2), HEIGHT, WALL_WIDTH, HEIGHT * 2, { isStatic: true });
