@@ -62,6 +62,16 @@ export function addFromMenu(x, y, id) {
   }
 }
 
+const mql = window.matchMedia("(orientation: portrait)");
+const sidebar = document.querySelector('.sidebar');
+if (mql.matches) {
+  sidebar.classList.add('portrait-size');
+} else {
+  sidebar.classList.remove('portrait-size');
+}
+window.addEventListener('resize', updateSidebarScale);
+window.addEventListener('orientationchange', updateSidebarScale)
+
 document.addEventListener("keypress", function(event) {
   if (event.key.toLowerCase() === "c") {
     Matter.World.clear(engine.world, true);
